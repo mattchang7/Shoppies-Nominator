@@ -1,0 +1,55 @@
+div { 
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    align-items: center;
+}
+
+.header {
+    flex-direction: row;
+    justify-content: center;
+    background-color: tan;
+    width: 60vw;
+}
+
+.body {
+    background-color: grey;
+    justify-content: center;
+    width: 60vw;
+}
+
+.searchBar {
+    background-color: white;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#searchBox {
+    width: 80%;
+}
+
+#searchButton {
+    width: 15%;
+}
+
+.box {
+    padding: 10px;
+    align-items: center;
+}
+
+.results {
+    margin: 10px;
+    width: 50vw;
+    align-items: center;
+    background-color: lightpink;
+}
+
+.nominees {
+    margin: 10px;
+    width: 50vw;
+    align-items: center;
+    background-color: white;
+}
