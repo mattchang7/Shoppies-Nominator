@@ -7,6 +7,10 @@ const Results = ({ results, nominees, getNominees, addNominee, removeNominee }) 
         await addNominee(movie)
         await getNominees()
     }
+    const unnominate = async (movieId) => {
+        await removeNominee(movieId)
+        await getNominees()
+    }
     return (
         <div>
         {
@@ -22,8 +26,8 @@ const Results = ({ results, nominees, getNominees, addNominee, removeNominee }) 
                                 <h4 className='movieContent'>{movie.Title}</h4>
                                 <p className='movieContent'>{movie.Year}</p>
                                 {
-                                    nominees.map(nominee => nominee.imdbID).includes(movie.imbdID) ? (
-                                        <button type='submit' onClick={() => nominate(movie)}><h4>Remove Nomination</h4></button>
+                                    nominees.map(nominee => nominee.imdbID).includes(movie.imdbID) ? (
+                                        <button type='submit' onClick={() => unnominate(movie.imdbID)}><h4>Remove Nomination</h4></button>
                                     ) : (
                                         <button type='submit' onClick={() => nominate(movie)}><h4>Nominate</h4></button>
                                     )
