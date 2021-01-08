@@ -1,7 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { getNominees, addNominee, removeNominee } from '../redux/nominees'
 
-const Results = ({ results }) => {
+const Results = ({ results, nominees, getNominees, addNominee, removeNominee }) => {
+    const nominate = async (movie) => {
+        await addNominee(movie)
+        await getNominees()
+    }
     return (
         <div>
         {
@@ -9,25 +14,42 @@ const Results = ({ results }) => {
                 <div className='results'>
                     <h1>Results</h1>
                     <ul>
-                    { results.length !== 0 && results.map(({ imdbID, Poster, Title, Year }) => (
-                        <li key={imdbID}>
-                            <img src={Poster} />
-                            <h4>{Title}</h4>
-                            <p>{Year}</p>
+                    { results.map(movie => {
+                        return (
+                        <li key={movie.imdbID}>
+                            <img src={movie.Poster} className='poster' />
+                            <div className='movieContent'>
+                                <h4 className='movieContent'>{movie.Title}</h4>
+                                <p className='movieContent'>{movie.Year}</p>
+                                {
+                                    nominees.map(nominee => nominee.imdbID).includes(movie.imbdID) ? (
+                                        <button type='submit' onClick={() => nominate(movie)}><h4>Remove Nomination</h4></button>
+                                    ) : (
+                                        <button type='submit' onClick={() => nominate(movie)}><h4>Nominate</h4></button>
+                                    )
+                                }
+                            </div>
                         </li>
-                    ))}
+                    )})}
                     </ul>
                 </div>
             ) : (
-                <div/>
+                <div />
             )
-        } 
+        }
         </div>
     )
 }
 
 const mapState = state => ({
-    results: state.results
+    results: state.results,
+    nominees: state.nominees
 })
 
-export default connect(mapState)(Results)
+const mapDispatch = dispatch => ({
+    getNominees: () => dispatch(getNominees()),
+    addNominee: (nominee) => dispatch(addNominee(nominee)),
+    removeNominee: (nomineeId) => dispatch(removeNominee(nomineeId))
+})
+
+export default connect(mapState, mapDispatch)(Results)

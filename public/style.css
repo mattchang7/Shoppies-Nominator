@@ -1,3 +1,15 @@
+* {
+    box-sizing: border-box;
+    font-family: helvetica;
+}
+
+body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+}
+
 div { 
     display: flex;
     flex-direction: column;
@@ -5,13 +17,14 @@ div {
 
 .container {
     align-items: center;
+    height: 100%;
 }
 
 .header {
     flex-direction: row;
     justify-content: center;
     background-color: tan;
-    width: 60vw;
+    width: 100vw;
 }
 
 .body {
@@ -24,15 +37,14 @@ div {
     background-color: white;
     padding: 10px;
     flex-direction: row;
-    justify-content: space-around;
 }
 
 #searchBox {
-    width: 80%;
+    margin: 1vw;
 }
 
 #searchButton {
-    width: 15%;
+    margin: 1vw
 }
 
 .box {
@@ -52,4 +64,24 @@ div {
     width: 50vw;
     align-items: center;
     background-color: white;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    flex-direction: row;
+}
+
+.poster {
+    width: 20%;
+    height: 20%;
+}
+
+.movieContent {
+    display: inline;
+    flex-direction: column;
 }

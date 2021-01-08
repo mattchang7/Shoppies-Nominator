@@ -2,27 +2,21 @@ const Sequelize = require('sequelize');
 const db = require('./database');
 
 module.exports = db.define('nominee', {
-  title: {
+  imdbID: {
+    type: Sequelize.STRING,
+    primaryKey: true
+  },
+  Title: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true
     }
   },
-  year: {
+  Year: {
     type: Sequelize.DATE
   },
-  director: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
-  description: {
-      type: Sequelize.TEXT
-  },
-  posterUrl: {
+  Poster: {
       type: Sequelize.TEXT
   }
 });

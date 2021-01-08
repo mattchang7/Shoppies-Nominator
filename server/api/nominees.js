@@ -4,9 +4,7 @@ const { Nominee } = require('../db')
 // GET /api/nominees
 router.get('/', async (req, res, next) => {
     try {
-        const projects = await Nominee.findAll({
-            include: Robot
-        })
+        const projects = await Nominee.findAll()
         res.json(projects)
     }
     catch (err) {
@@ -14,7 +12,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-// POST /api/nominee
+// POST /api/nominees
 router.post('/', async(req, res, next) => {
     try {
         const project = await Nominee.create(req.body)
@@ -24,7 +22,7 @@ router.post('/', async(req, res, next) => {
     }
 })
 
-// DELETE /api/nominee/:nomineeId
+// DELETE /api/nominees/:nomineeId
 router.delete('/:nomineeId', async (req, res, next) => {
     try {
         const nominee = await Nominee.findByPk(req.params.nomineeId)
