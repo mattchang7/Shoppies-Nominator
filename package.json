@@ -7,6 +7,7 @@
     "start-dev": "npm run build-watch & npm run start-server",
     "start-server": "nodemon main.js -e html,js,css --ignore public",
     "build-watch": "webpack -w",
+    "start": "echo 'Running server for production - developers, use npm run start-dev for development' && node main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
