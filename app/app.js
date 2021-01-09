@@ -2,31 +2,47 @@ import React from 'react';
 import { Nominees, Results, SearchForm } from './components'
 import { connect } from 'react-redux'
 import { getNominees } from './redux/nominees'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure()
 
 class App extends React.Component {
+    constructor() {
+        super()
+        this.notify = this.notify.bind(this)
+    }
     async componentDidMount() {
         await this.props.getNominees()
     }
+    notify(){
+        toast('You have selected your five nominations!')
+    }
     render() {
+        if (this.props.nominees.length === 5) {
+            this.notify()
+        }
         return (
             <div className='container' >
                 <div className='header'>
                     <h1>Welcome to the Shoppies</h1>
                 </div>
-                <div className='body'>
                     <SearchForm/>
                     <div className='box'>
                     <Nominees/>
                     <Results/>
                     </div>
-                </div>
             </div>
         )
     }
 }
 
+const mapState = state => ({
+    nominees: state.nominees
+})
+
 const mapDispatch = dispatch => ({
     getNominees: () => dispatch(getNominees())
 })
 
-export default connect(null, mapDispatch)(App)
+export default connect(mapState, mapDispatch)(App)
