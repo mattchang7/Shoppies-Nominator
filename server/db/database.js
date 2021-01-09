@@ -11,8 +11,7 @@ const pkg = require('../../package.json');
 // playing aound with the app in the browser. We'll check to see if the node
 // node environment is 'test', in which case we'll use the test database.
 // Otherwise, the app connects with the normal database.
-// const dbName = process.env.NODE_ENV === 'test' ? `${pkg.name}_test` : pkg.name;
-const dbName = 'postgresql-rectangular-07134'
+const dbName = process.env.NODE_ENV === 'test' ? `${pkg.name}_test` : pkg.name;
 console.log(chalk.yellow(`Opening database connection to ${dbName}`));
 
 const db = new Sequelize(`postgres://localhost:5432/${dbName}`, {
