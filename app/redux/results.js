@@ -12,8 +12,7 @@ export const gotResults = (results) => ({
 // THUNK CREATORS
 export const getResults = (searchTerm) => async (dispatch) => {
   try {
-    const { data: results } = await axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.OMDB_API_KEY}&type=movie&s=${searchTerm.split(' ').join('+')}`)
-    console.log('RESULTS FROM OMDB -->', results.Search)
+    const { data: results } = await axios.get(`https://www.omdbapi.com/?i=tt3896198&apikey=1badd84a&type=movie&s=${searchTerm.split(' ').join('+')}`)
     dispatch(gotResults(results.Search))
   } catch (err) {
     console.error(err)
