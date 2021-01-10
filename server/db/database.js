@@ -9,7 +9,7 @@ const db = new Sequelize(process.env.DATABASE_URL || `postgres://localhost:5432/
   logging: false,
   dialect: 'postgres',
   dialectOptions: {
-    ssl: true
+    ssl: process.env.DATABASE_URL ? true : false
   }
 });
 
