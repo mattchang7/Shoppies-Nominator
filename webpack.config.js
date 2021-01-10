@@ -1,6 +1,6 @@
 'use strict'
-
 const { resolve } = require('path')
+const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
   entry: ['babel-polyfill', './app/main'],
@@ -8,7 +8,7 @@ module.exports = {
     path: __dirname,
     filename: './public/bundle.js'
   },
-  mode: 'development',
+  mode: isDev ? 'development' : 'production',
   context: __dirname,
   devtool: 'source-map',
   resolve: {
