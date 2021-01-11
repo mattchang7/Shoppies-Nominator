@@ -12,7 +12,7 @@ To run the app locally, fork and clone this repository, `npm install`, then run 
 
 ## Notes
 
-Due to time sensitive nature of this project, I had to make some compromises that I feel could be fixed given enough time. 
+Due to time sensitive nature of this project, I had to make some compromises that I feel could be fixed given more time and effort. 
 
 Two of the most prominent examples are the double renderings of the notification when five nominees are selected and the repeating animations of the nominees list each time a nominee is removed. Using React-Redux's connect function to keey components connected to the store is how they stay up to date, but it is also why these UX problems occur. 
 

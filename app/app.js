@@ -10,9 +10,9 @@ toast.configure()
 class App extends React.Component {
     async componentDidMount() {
         await this.props.getNominees()
-        if (this.props.nominees.length === 5) toast('You have selected five nominees')
     }
     render() {
+        if (this.props.nominees.length === 5) toast('You have selected five nominees')
         return (
             <div className='container' >
                 <div className='header'>
