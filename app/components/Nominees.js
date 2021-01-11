@@ -8,7 +8,7 @@ toast.configure()
 
 const Nominees = ({ results, nominees }) => {
     if (nominees.length === 5) {
-        toast('')
+        toast('You have selected five nominees')
     }
     return (
         <div>
