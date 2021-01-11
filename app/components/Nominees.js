@@ -7,9 +7,9 @@ import Card from './Card'
 toast.configure()
 
 const Nominees = ({ results, nominees }) => {
-    if (nominees.length === 5) {
-        toast('You have selected five nominees')
-    }
+    // if (nominees.length === 5) {
+    //     toast('You have selected five nominees')
+    // }
     return (
         <div>
             {

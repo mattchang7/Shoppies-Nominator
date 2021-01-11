@@ -3,6 +3,11 @@ import { connect } from 'react-redux'
 import { getNominees, addNominee, removeNominee } from '../redux/nominees'
 import { motion } from 'framer-motion'
 
+const buttonVariants = {
+    'initial': { scale: 1 },
+    'hover': { scale: 1.1 }
+}
+
 const Card = ({ nominees, type, fetchNominees, appendNominee, deleteNominee, imdbID, Title, Year, Poster}) => {
     const nominate = async (movie) => {
         await appendNominee(movie)
@@ -28,15 +33,42 @@ const Card = ({ nominees, type, fetchNominees, appendNominee, deleteNominee, imd
                 {
                     type === 'result' ? (
                         nominees.map(nominee => nominee.imdbID).includes(imdbID) ? (
-                            <button className='movieContent nominateButton' type='submit' onClick={(e) => unnominate(e, imdbID)}><h4>Remove Nomination</h4></button>
+                            <motion.button 
+                                className='movieContent nominateButton' 
+                                type='submit' 
+                                onClick={(e) => unnominate(e, imdbID)}
+                                variants={buttonVariants}
+                                initial='initial'
+                                whileHover='hover'
+                            >
+                                <h4>Remove Nomination</h4>
+                            </motion.button>
                         ) : ( nominees.length === 5 ? (
                                 <div />
                             ) : (
-                                <button className='movieContent nominateButton' type='submit' onClick={() => nominate({ imdbID, Poster, Title, Year })}><h4>Nominate</h4></button>
+                                <motion.button 
+                                    className='movieContent nominateButton' 
+                                    type='submit' 
+                                    onClick={() => nominate({ imdbID, Poster, Title, Year })}
+                                    variants={buttonVariants}
+                                    initial='initial'
+                                    whileHover='hover'
+                                >
+                                    <h4>Nominate</h4>
+                                </motion.button>
                             )
                         )
                     ) : (
-                        <button className='movieContent nominateButton' type='submit' onClick={(e) => unnominate(e, imdbID)}><h4>Remove Nomination</h4></button>
+                        <motion.button 
+                            className='movieContent nominateButton' 
+                            type='submit' 
+                            onClick={(e) => unnominate(e, imdbID)}
+                            variants={buttonVariants}
+                            initial='initial'
+                            whileHover='hover'
+                        >
+                            <h4>Remove Nomination</h4>
+                        </motion.button>
                     )
                 }
             </div>

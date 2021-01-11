@@ -40,7 +40,7 @@ div {
     font-weight: 100;
     font-size: 7vh;
     animation: flow 5s ease-in-out infinite;
-    background: linear-gradient(-60deg, #904e95, #904e95, #e73c7e, #ee7752);
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
     background-size: 300%;
     -webkit-background-clip: text;
         background-clip: text;
