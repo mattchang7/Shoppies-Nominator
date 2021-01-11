@@ -1,17 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getNominees, removeNominee } from '../redux/nominees'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Card from './Card'
 
 toast.configure()
 
-const Nominees = ({ results, nominees, fetchNominees, deleteNominee }) => {
-    const handleClick = async (e, nomineeId) => {
-        e.preventDefault()
-        await deleteNominee(nomineeId)
-        await fetchNominees()
-    }
+const Nominees = ({ results, nominees }) => {
     if (nominees.length === 5) {
         toast('')
     }
@@ -24,14 +19,7 @@ const Nominees = ({ results, nominees, fetchNominees, deleteNominee }) => {
                         <ul>
                         {
                             nominees.map(nominee => (
-                                <li key={nominee.imdbID}>
-                                    <img src={nominee.Poster} className='poster' />
-                                    <div className='movieContent'>
-                                        <h4 className='movieContent'>{nominee.Title}</h4>
-                                        <p className='movieContent'>{nominee.Year}</p>
-                                        <button type='submit' onClick={(e) => handleClick(e, nominee.imdbID)}><h4>Remove Nomination</h4></button>
-                                    </div>
-                                </li>
+                                <Card type='nominee' imdbID={nominee.imdbID} Title={nominee.Title} Year={nominee.Year} Poster={nominee.Poster} />
                             ))
                         }
                         </ul>
@@ -49,9 +37,4 @@ const mapState = state => ({
     results: state.results
 })
 
-const mapDispatch = dispatch => ({
-    fetchNominees: () => dispatch(getNominees()),
-    deleteNominee: (nomineeId) => dispatch(removeNominee(nomineeId))
-})
-
-export default connect(mapState, mapDispatch)(Nominees)
+export default connect(mapState)(Nominees)
