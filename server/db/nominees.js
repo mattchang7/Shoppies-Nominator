@@ -14,7 +14,7 @@ module.exports = db.define('nominee', {
     }
   },
   Year: {
-    type: Sequelize.DATE
+    type: Sequelize.STRING
   },
   Poster: {
       type: Sequelize.TEXT

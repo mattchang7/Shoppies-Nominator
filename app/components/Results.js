@@ -18,18 +18,18 @@ const Results = ({ results, nominees, getNominees, addNominee, removeNominee }) 
                 <div className='results'>
                     <h1>Results</h1>
                     <ul>
-                    { results.map(movie => {
+                    { results.map(({ imdbID, Poster, Title, Year }) => {
                         return (
-                        <li key={movie.imdbID}>
-                            <img src={movie.Poster} className='poster' />
+                        <li key={imdbID}>
+                            <img src={Poster} className='poster' />
                             <div className='movieContent'>
-                                <h4 className='movieContent'>{movie.Title}</h4>
-                                <p className='movieContent'>{movie.Year}</p>
+                                <h4 className='movieContent'>{Title}</h4>
+                                <p className='movieContent'>{Year}</p>
                                 {
-                                    nominees.map(nominee => nominee.imdbID).includes(movie.imdbID) ? (
-                                        <button type='submit' onClick={() => unnominate(movie.imdbID)}><h4>Remove Nomination</h4></button>
+                                    nominees.map(nominee => nominee.imdbID).includes(imdbID) ? (
+                                        <button type='submit' onClick={() => unnominate(imdbID)}><h4>Remove Nomination</h4></button>
                                     ) : (
-                                        <button type='submit' onClick={() => nominate(movie)}><h4>Nominate</h4></button>
+                                        <button type='submit' onClick={() => nominate({ imdbID, Poster, Title, Year })}><h4>Nominate</h4></button>
                                     )
                                 }
                             </div>

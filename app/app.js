@@ -29,8 +29,8 @@ class App extends React.Component {
                 </div>
                     <SearchForm/>
                     <div className='box'>
-                    <Nominees/>
                     <Results/>
+                    <Nominees/>
                     </div>
             </div>
         )
