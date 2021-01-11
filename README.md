@@ -12,7 +12,7 @@ To run the app locally, fork and clone this repository, `npm install`, then run 
 
 ## Notes
 
-Due to time sensitive nature of this project, I had to make some compromises that I feel could be fixed given more time and effort: 
+Due to the time sensitive nature of this project, I had to make some compromises that I feel could be fixed given more time and effort: 
 - Animations run every time a nominee is removed
   - This is an issue with the animation library used (Framer-Motion) and how I am representing the nominees from state. Every time a nominee is removed, a DELETE request is sent to the database, followed by a GET request, which is then dispatched to the redux store. Since my components are connected to the store by React-Redux, any change in the store will trigger a rerender, which is why the animations replay. 
   - Although I couldn't find a solution to this in the Framer-Motion documentation, I feel that there might be a way to have the animations trigger only when the entire app rerenders, instead of the Nominees component. 
