@@ -1,9 +1,13 @@
-import { default as Nominees}  from './Nominees'
-import { default as Results}  from './Results'
-import { default as SearchForm}  from './SearchForm'
+import Nominees  from './Nominees'
+import Results  from './Results'
+import SearchForm  from './SearchForm'
+import Card  from './Card'
+import Notification  from './Notification'
 
 export {
     Nominees,
     Results,
-    SearchForm
+    SearchForm,
+    Card,
+    Notification
 }

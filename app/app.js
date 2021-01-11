@@ -1,20 +1,18 @@
 import React from 'react';
-import { Nominees, Results, SearchForm } from './components'
+import { Nominees, Results, SearchForm, Notification } from './components'
 import { connect } from 'react-redux'
 import { getNominees } from './redux/nominees'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-
-toast.configure()
 
 class App extends React.Component {
     async componentDidMount() {
         await this.props.getNominees()
     }
     render() {
-        if (this.props.nominees.length === 5) toast('You have selected five nominees')
         return (
             <div className='container' >
+                {
+                    (this.props.nominees.length === 5) ? (<Notification />) : (<div />)
+                }
                 <div className='header'>
                     <h1 id='title'>THE SHOPPIES NOMINATIONS</h1>
                     <p>SEARCH TO ADD UP TO FIVE NOMINEES</p>

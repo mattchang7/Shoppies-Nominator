@@ -2,14 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import Card from './Card'
+import { Card } from './'
 
 toast.configure()
 
 const Nominees = ({ results, nominees }) => {
-    // if (nominees.length === 5) {
-    //     toast('You have selected five nominees')
-    // }
     return (
         <div>
             {
