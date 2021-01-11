@@ -8,20 +8,16 @@ import 'react-toastify/dist/ReactToastify.css'
 toast.configure()
 
 class App extends React.Component {
-    constructor() {
-        super()
-        this.notify = this.notify.bind(this)
-    }
     async componentDidMount() {
         await this.props.getNominees()
     }
-    notify(){
-        toast('You have selected your five nominations!')
-    }
+    // notify(){
+    //     toast('You have selected your five nominations!')
+    // }
     render() {
-        if (this.props.nominees.length === 5) {
-            this.notify()
-        }
+        // if (this.props.nominees.length === 5) {
+        //     this.notify()
+        // }
         return (
             <div className='container' >
                 <div className='header'>

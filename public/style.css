@@ -57,6 +57,7 @@ div {
     width: 45vw;
     align-items: center;
     background-color: white;
+    height: 100%;
 }
 
 .nominees {
